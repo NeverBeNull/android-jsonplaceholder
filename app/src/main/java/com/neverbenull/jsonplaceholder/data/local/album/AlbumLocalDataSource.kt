@@ -1,6 +1,6 @@
 package com.neverbenull.jsonplaceholder.data.local.album
 
-import com.neverbenull.jsonplaceholder.data.datasource.album.AlbumDataSource
+import com.neverbenull.jsonplaceholder.data.repository.album.AlbumDataSource
 import com.neverbenull.jsonplaceholder.domain.model.Album
 
 class AlbumLocalDataSource constructor(

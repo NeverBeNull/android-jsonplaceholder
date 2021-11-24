@@ -1,16 +1,19 @@
 package com.neverbenull.jsonplaceholder.di.data
 
-import com.neverbenull.jsonplaceholder.data.datasource.album.AlbumDataSource
 import com.neverbenull.jsonplaceholder.data.local.AppDataBase
 import com.neverbenull.jsonplaceholder.data.local.album.AlbumDao
 import com.neverbenull.jsonplaceholder.data.local.album.AlbumLocalDataSource
 import com.neverbenull.jsonplaceholder.data.remote.album.AlbumRemoteDataSource
 import com.neverbenull.jsonplaceholder.data.remote.album.AlbumService
+import com.neverbenull.jsonplaceholder.data.repository.album.AlbumDataSource
+import com.neverbenull.jsonplaceholder.data.repository.album.AlbumRepositoryImpl
+import com.neverbenull.jsonplaceholder.domain.repository.album.AlbumRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -34,6 +37,7 @@ object AlbumModule {
     }
 
     @Singleton
+    @AlbumLocalDataSource
     @Provides
     fun provideAlbumLocalDataSource(
         albumDao: AlbumDao
@@ -42,6 +46,7 @@ object AlbumModule {
     }
 
     @Singleton
+    @AlbumRemoteDataSource
     @Provides
     fun provideAlbumRemoteDataSource(
         albumService: AlbumService
@@ -49,4 +54,23 @@ object AlbumModule {
         return AlbumRemoteDataSource(albumService)
     }
 
+    @Singleton
+    @Provides
+    fun provideAlbumRepository(
+        @AlbumLocalDataSource albumLocalDataSource: AlbumDataSource,
+        @AlbumRemoteDataSource albumRemoteDataSource: AlbumDataSource
+    ) : AlbumRepository {
+        return AlbumRepositoryImpl(
+            albumLocalDataSource,
+            albumRemoteDataSource
+        )
+    }
+
+    @Qualifier
+    @Retention(AnnotationRetention.RUNTIME)
+    annotation class AlbumLocalDataSource
+
+    @Qualifier
+    @Retention(AnnotationRetention.RUNTIME)
+    annotation class AlbumRemoteDataSource
 }
