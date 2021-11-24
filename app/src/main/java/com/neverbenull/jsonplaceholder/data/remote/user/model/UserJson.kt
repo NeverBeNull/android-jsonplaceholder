@@ -1,12 +1,17 @@
 package com.neverbenull.jsonplaceholder.data.remote.user.model
 
+
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class UserJson(
-    val id: Int,
-    val name: String,
-    val username: String,
-    val email: String?,
-    val phone: String?,
-    val website: String?,
-    val address: Address?,
-    val company: Company?
+    @Json(name = "id") val id: Int,
+    @Json(name = "name") val name: String,
+    @Json(name = "username") val username: String,
+    @Json(name = "email") val email: String?,
+    @Json(name = "phone") val phone: String?,
+    @Json(name = "website") val website: String?,
+    @Json(name = "address") val address: Address?,
+    @Json(name = "company") val company: Company?
 )

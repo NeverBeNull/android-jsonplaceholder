@@ -1,6 +1,11 @@
 package com.neverbenull.jsonplaceholder.data.remote.user.model
 
+
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class Geo(
-    val lat: String,
-    val lng: String
+    @Json(name = "lat") val lat: String,
+    @Json(name = "lng") val lng: String
 )
