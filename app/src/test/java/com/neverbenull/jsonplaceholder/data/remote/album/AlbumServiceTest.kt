@@ -1,6 +1,7 @@
 package com.neverbenull.jsonplaceholder.data.remote.album
 
 import com.neverbenull.jsonplaceholder.data.remote.NetworkModuleTest
+import com.neverbenull.jsonplaceholder.di.data.AlbumModule
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
