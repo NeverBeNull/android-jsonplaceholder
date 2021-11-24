@@ -1,5 +1,6 @@
-package com.neverbenull.jsonplaceholder.data.remote.comment
+package com.neverbenull.jsonplaceholder.di.data
 
+import com.neverbenull.jsonplaceholder.data.remote.todo.TodoService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,14 +10,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CommentModule {
+object TodoModule {
 
     @Singleton
     @Provides
-    fun provideCommentService(
+    fun provideTodoService(
         retrofit: Retrofit
-    ) : CommentService {
-        return retrofit.create(CommentService::class.java)
+    ) : TodoService {
+        return retrofit.create(TodoService::class.java)
     }
 
 }

@@ -1,5 +1,6 @@
-package com.neverbenull.jsonplaceholder.data.remote.photo
+package com.neverbenull.jsonplaceholder.di.data
 
+import com.neverbenull.jsonplaceholder.data.remote.comment.CommentService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,14 +10,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object PhotoModule {
+object CommentModule {
 
     @Singleton
     @Provides
-    fun providePhotoService(
+    fun provideCommentService(
         retrofit: Retrofit
-    ) : PhotoService {
-        return retrofit.create(PhotoService::class.java)
+    ) : CommentService {
+        return retrofit.create(CommentService::class.java)
     }
 
 }

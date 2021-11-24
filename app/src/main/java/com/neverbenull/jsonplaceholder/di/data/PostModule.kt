@@ -1,5 +1,6 @@
-package com.neverbenull.jsonplaceholder.data.remote.post
+package com.neverbenull.jsonplaceholder.di.data
 
+import com.neverbenull.jsonplaceholder.data.remote.post.PostService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,5 +1,6 @@
-package com.neverbenull.jsonplaceholder.data.remote.todo
+package com.neverbenull.jsonplaceholder.di.data
 
+import com.neverbenull.jsonplaceholder.data.remote.photo.PhotoService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,14 +10,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object TodoModule {
+object PhotoModule {
 
     @Singleton
     @Provides
-    fun provideTodoService(
+    fun providePhotoService(
         retrofit: Retrofit
-    ) : TodoService {
-        return retrofit.create(TodoService::class.java)
+    ) : PhotoService {
+        return retrofit.create(PhotoService::class.java)
     }
 
 }

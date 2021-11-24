@@ -1,4 +1,4 @@
-package com.neverbenull.jsonplaceholder.data.remote
+package com.neverbenull.jsonplaceholder.di
 
 import dagger.Module
 import dagger.Provides

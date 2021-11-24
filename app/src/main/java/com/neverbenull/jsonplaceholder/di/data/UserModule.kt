@@ -1,5 +1,6 @@
-package com.neverbenull.jsonplaceholder.data.remote.album
+package com.neverbenull.jsonplaceholder.di.data
 
+import com.neverbenull.jsonplaceholder.data.remote.user.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,14 +10,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AlbumModule {
+object UserModule {
 
     @Singleton
     @Provides
-    fun provideAlbumService(
+    fun provideUserService(
         retrofit: Retrofit
-    ) : AlbumService {
-        return retrofit.create(AlbumService::class.java)
+    ) : UserService {
+        return retrofit.create(UserService::class.java)
     }
 
 }
