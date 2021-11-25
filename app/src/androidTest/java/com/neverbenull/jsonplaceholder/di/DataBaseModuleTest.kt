@@ -20,7 +20,9 @@ open class DataBaseModuleTest {
     @Before
     fun createDb() {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        database = Room.inMemoryDatabaseBuilder(context, AppDataBase::class.java).build()
+        database = Room.inMemoryDatabaseBuilder(context, AppDataBase::class.java)
+            .fallbackToDestructiveMigration()
+            .build()
 
         albumDao = database.albumDao()
     }

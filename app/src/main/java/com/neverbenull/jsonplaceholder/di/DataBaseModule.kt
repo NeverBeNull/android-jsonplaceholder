@@ -22,6 +22,7 @@ object DataBaseModule {
         @ApplicationContext context: Context
     ) : AppDataBase {
         return Room.databaseBuilder(context, AppDataBase::class.java, DB_NAME)
+            .fallbackToDestructiveMigration()
             .build()
     }
 
